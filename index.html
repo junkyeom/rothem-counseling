@@ -28,25 +28,25 @@
 
         .user-bubble {
             background-color:#fef01b;
-            float: right; /* 오른쪽으로 부유(floating) */
-            clear: both; /* 부유(floating) 해제 */
-            max-width: 70%; /* 최대 너비 설정 */
-            min-width: 30px; /* 최소 너비 설정 */
-            padding: 10px; /* 안쪽 여백 설정 */
-            margin-bottom: 10px; /* 아래 여백 설정 */
-            border-radius: 10px; /* 테두리 반경 설정 */
-            word-wrap: break-word; /* 긴 단어가 말풍선을 넘어갈 경우 줄 바꿈 설정 */
+            float: right; 
+            clear: both; 
+            max-width: 70%; 
+            min-width: 30px; 
+            padding: 10px; 
+            margin-bottom: 10px; 
+            border-radius: 10px; 
+            word-wrap: break-word; 
         }
 
         .bot-bubble {
             background-color: #ffffff;
-            clear: both; /* 부유(floating) 해제 */
-            max-width: 70%; /* 최대 너비 설정 */
-            min-width: 30px; /* 최소 너비 설정 */
-            padding: 10px; /* 안쪽 여백 설정 */
-            margin-bottom: 10px; /* 아래 여백 설정 */
-            border-radius: 10px; /* 테두리 반경 설정 */
-            word-wrap: break-word; /* 긴 단어가 말풍선을 넘어갈 경우 줄 바꿈 설정 */
+            clear: both; 
+            max-width: 70%; 
+            min-width: 30px; 
+            padding: 10px; 
+            margin-bottom: 10px; 
+            border-radius: 10px; 
+            word-wrap: break-word;
         }
 
 
@@ -112,7 +112,7 @@
             🥳로뎀상담소에 오신것을 환영합니다.
         </div>
         <div id="counselingResponse">
-            <!-- The counseling response will appear here -->
+            <!-- 상담 응답 뜨는 곳임 -->
         </div>
         <div id="loader" class="loader" style="display:none;">
             <i class="loading-icon fas fa-spinner fa-spin"></i>
@@ -126,7 +126,6 @@
         <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async=""></script>
     </div>
     <script>
-        // 변수 생성
         let userMessages = [];
         let assistantMessages = [];
         let myName = '';
@@ -150,14 +149,14 @@
 
 
         async function sendMessage() {
-            // 로딩 스피너 아이콘 보여주기
+            // 로딩 스피너 보여줌
             document.getElementById('loader').style.display = "block";
 
-            //사용자의 메시지 가져옴
+            // 유저 메시지 가져옴
             const messageInput = document.getElementById('messageInput');
             const message = messageInput.value;
 
-            //채팅 말풍선에 사용자의 메시지 출력
+            // 채팅 말풍선에 유저 메시지 출력함
             const userBubble = document.createElement('div');
             userBubble.className = 'chat-bubble user-bubble';
             userBubble.textContent = message;
@@ -169,7 +168,7 @@
             //입력 필드 초기화
             messageInput.value = '';
 
-            //프런트엔드 재시도 로직
+            //재시도 로직
             function sleep(sec) {
                 return new Promise(resolve => setTimeout(resolve, sec * 1000));
             }
@@ -204,12 +203,12 @@
 
                     assistantMessages.push(data.assistant);
 
-                    break; // 성공 시 루프 탈출
+                    break; 
 
                 } catch (error) {
                     console.error('Retrying fetch...', error);
                     retries++;
-                    await sleep(1); // 재시도 전 대기
+                    await sleep(1); 
                 } finally {
                     document.getElementById('loader').style.display = "none"; // 성공과 실패 모두에서 로딩 아이콘 숨기기
                 }
